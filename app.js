@@ -5,6 +5,7 @@ var logger = require('morgan'); //HTTP request logger middleware for node.js
 var cookieParser = require('cookie-parser'); 
 var bodyParser = require('body-parser');
 var db = require('./model/db');
+var model = require('./model/models');
 var pug = require('pug');
 
 var routes = require('./routes/index');
