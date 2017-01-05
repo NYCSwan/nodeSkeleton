@@ -5,10 +5,13 @@ var logger = require('morgan'); //HTTP request logger middleware for node.js
 var cookieParser = require('cookie-parser'); 
 var bodyParser = require('body-parser');
 var db = require('./model/db');
+var model = require('./model/products');
 var pug = require('pug');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var things = require('./products')
 
 var app = express(); //setting app as 
 
@@ -24,8 +27,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', routes); //spa? app.use('/', models);
 app.use('/users', users);
+app.use('/models', models);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
